@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:replace="layouts/NewFile :: head">
+<title>Regristro Usuario</title>
+</head>
+<body
+style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+
+<div class="content">
+        <div class="contact-wrapper">
+            <div class="contact-form"> <br>
+                <h3 align="center"> REGISTRAR USUARIO</h3>
+                <form action="/CrearRegistro" method="post">
+                    <p>
+                        <label for="fullname">PRIMER NOMBRE</label>
+                        <input type="text" name="Pnombre" required placeholder="ESCRIBA SU PRIMER NOMBRE" 
+                        title="ESCRIBA SU PRIMER NOMBRE"onkeyup="text(this)">
+                    </p>
+                    <p>
+                        <label for="fullname">SEGUNDO NOMBRE</label>
+                        <input type="text" name="Snombre" required placeholder="ESCRIBA SU SEGUNDO NOMBRE" 
+                        title="ESCRIBA SU SEGUNDO NOMBRE" onkeyup="text(this)">
+                    </p>
+                    <p>
+                        <label for="">PRIMER APELLIDO</label>
+                        <input type="text" name="Papellido" required placeholder="ESCRIBA SU PRIMER APELLIDO" 
+                        title="ESCRIBA SU PRIMER APELLIDO" onkeyup="text(this)">
+                    </p>
+                    
+                    <p>
+                        <label for="">SEGUNDO APELLIDO</label>
+                        <input type="text" name="Sapellido" required placeholder="ESCRIBA SU SEGUNDO APELLIDO" 
+                        onkeyup="text(this)" title="ESCRIBA SU SEGUNDO APELLIDO"> 
+                    </p>
+                    <p>
+                        <label for="">CORREO</label>
+                        <input type="email" name="correo" required 
+                        placeholder="ESCRIBA SU CORREO ElECTRONICO" onkeyup="cor(this)" title="ESCRIBA SU CORREO ElECTRONICO">
+                    </p>
+                    <p>
+                       <label for="">CONTRASEÑA</label> 
+                       <input type="password" name="password" required 
+                       placeholder="ESCRIBA LA CONTRASEÑA SIN SINGNOS: $,@,#,% " minlength="4"
+                       maxlength="10" min="4" max="100" onkeyup="contra(this)" title="ESCRIBA LA CONTRASEÑA SIN SINGNOS: $,@,#,%">
+                    </p>
+                    <p>
+                        <label for="">DUI</label>
+                        <input type="text" name="dui" placeholder="ESCRIBA SU DUI SIN GUIÓN" pattern="[0-9]+" minlength="9" maxlength="9"  
+                        title="ESCRIBA SU DUI SIN GUIÓN" required="">
+                    </p>
+                    <p>
+                        <label for="">DIRECCIÓN</label >
+                        <input type="text" name="dire" required placeholder="ESCRIBA SU DIRECIÓN" onkeyup="contra(this)">
+                    </p>
+                    <p class="block">
+                         <button type="submit" class="btn btn-success">CREAR REGISTRO</button>
+                    </p>                  
+                </form>
+            </div>
+        </div>
+    </div>
+ <script type="text/javascript">
+function text(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^A-Za-z\ñ]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+ <script type="text/javascript">
+function nume(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^0-9]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+ <script type="text/javascript">
+function contra(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^A-Za-z0-9]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+<script type="text/javascript">
+function cor(elemento){
+  let texto = elemento.value 
+  texto = texto.split(/[^A-Za-z0-9\@\.]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+</body>
+</html>

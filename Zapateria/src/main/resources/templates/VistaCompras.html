@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/NewFile :: head">
+ <meta charset="utf-8" />
+<title>Insert title here</title>
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+
+<header class="encabezado">
+<div>
+    <img src="/img/descarga (3).jpg" alt="" style="border-radius: 10%;
+    display: block;
+    margin: auto;
+    background-color: white;
+    height: 100px; 
+    width: 100px; 
+    display: block;
+    margin: auto;"> 
+    </div> 
+      <br>
+    <h4 style="text-align: center;">TUS COMPRAS</h4>
+    <nav>
+        <ul class="funciones">
+        <li><a href="/compra">REGRESAR A MENÚ</a></li>
+        </ul>
+    </nav>
+</header>
+
+      <table class="table table-dark">
+  <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">FECHA DE LA COMPRA</th>
+            <th scope="col">ZAPATO</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">CANTIDAD</th>
+            <th scope="col">TOTAL</th>
+            <th scope="col">CLIENTE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="d:${detalle}" th:if="${d.FkCliente.getId()==user}">
+          <td th:text="${d.idDetalleCompra}"></td> 
+          <td th:text="${d.FkCompra.getFecha()}"></td> 	 
+          <td th:text="${d.FkProducto.getNombre()}"></td>   
+          <td th:text="${d.Precio} + '$'"></td> 
+          <td th:text="${d.Cantidad}"></td> 
+           <td th:text="${d.FkCompra.getTotal()} + '$'"></td> 
+          <td th:text="${d.FkCliente.getNombre1()}"></td>
+              
+          </tr> 
+        </tbody>
+      </table>
+</body>
+</html>

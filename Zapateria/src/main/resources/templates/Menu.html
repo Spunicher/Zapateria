@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<head>
+<link rel="stylesheet" type="text/css" href="css/styleM.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Productos</title>
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+
+<style>
+.funciones{
+ list-style: none;
+ padding: 0;
+ width: 90%;
+ max-width:800px;
+ margin: auto;
+}
+.funciones li a{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+     display: block;
+}
+.funciones li{
+    display: inline-block;
+    text-align: center;
+}
+.funciones li a:hover{
+    background-color: orange;
+}
+</style>
+
+<header  
+    style=" 
+    background-color: #214252;
+    align-items: center;
+    text-align: center;
+    width: 1250px;
+    height: 240px;
+    margin-left: 50px;"> 
+    
+  
+    <div>
+    <img src="/img/descarga (3).jpg" alt="" 
+    style="
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    background-color: white;
+    height: 100px; 
+    width: 100px; 
+    display: block;
+    margin: auto;"> 
+    </div> 
+      <br>
+    <h4 style="text-align: center; color: white"><b>BIENVENIDO</b></h4>
+    <nav>
+        <ul class="funciones">
+        
+        <li><a href="/admin" style="color: white;"><b>ADMINISTRACIÓN</b></a></li>
+         <li><a href="/VistaDetalle" style="color: white;"><b>MIS COMPRAS</b></a></li> 
+         <li> <a href="/VistaCarrito" style="color: white;"><img src="img/carros.png" 
+       style="width: 50px; height: 40px;"></a></li>
+      <li><a href="/logout" style="color: white;"><b>SALIR DEL SISTEMA</b></a></li>
+        </ul>
+    </nav>
+</header>
+<p class="alert alert-success" th:if="${mensaje}" th:text="${mensaje}" align="center"></p>
+<div th:each="p:${producto2}" 
+style="width: 370px;
+	height: 250px;
+	float: left;
+	background-color: #C9E0D4;
+	margin-left: 20px;
+	margin-top: 20px;
+	border-radius: 10px;
+	margin-left: 60px;">
+
+<div
+style="width: 190px;
+	height: 230px;
+	float: right;
+	background-color: #C9E0D4;
+	margin-right: 10px;
+	text-align: center;
+	border-radius: 70px;">
+	
+<label th:text="${p.idProducto}" hidden></label><br>
+
+<label style="color: black; font-size: 150%;" >NOMBRE:</label>
+<label th:text="${p.nombre}" style="color: black; font-size: 150%;"></label><br>
+<label style="color: black; font-size: 150%;">MARCA:</label>
+<label th:text="${p.marca}" style="color: black; font-size: 150%;"></label><br>
+<label style="color: black; font-size: 150%;">PRECIO:</label>
+<label th:text="${p.Precio}" style="color: black; font-size: 150%;"></label><label style="color: black; height:80px"><h4>$</h4></label><br> 
+
+</div>
+
+<div style=
+   "width: 150px;
+	height: 150px;
+	margin-left: 5px;
+	margin-top: 10px;
+	background-color: black;
+	border-radius: 70px;"><img th:src="@{'/imagenes/'+${p.imagen}}" style="width: 100%; height: 100%; border-radius: 70px;" /></div>
+
+<a  th:href="@{/lleva/}+${p.idProducto}"   class="btn btn-primary" style="margin-left: 10px; margin-top: 30px">+</a> 
+<a th:href="@{/llevardatos/}+${p.idProducto}" class="btn btn-danger" style=" margin-top: 30px">Comprar</a>
+</div>
+
+
+</body>
+</html>

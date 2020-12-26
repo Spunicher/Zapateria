@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<head th:replace="layouts/NewFile :: head">
+<link rel="stylesheet" type="text/css" href="css/styleM.css">
+<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/LoginStyle.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Vista Carrito</title>
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+
+<header class="encabezado">
+<br>
+<div>
+    <img src="/img/descarga (3).jpg" alt="" 
+    style="border-radius: 10px;
+    display: block;
+    margin: auto;
+    background-color: #C9E0D4;
+    height: 100px; 
+    width: 100px; 
+    display: block;
+    margin: auto;"> 
+</div> 
+    <br>
+    <h4 style="text-align: center;">TUS PRODUCTOS FAVORITOS</h4>
+    <nav>
+        <ul class="funciones">
+        <li><a href="/compra">REGRESAR A MENÚ</a></li>
+        </ul>
+    </nav>
+</header> 
+
+<div align="center">
+<p th:if="${mensaje}" th:text="${mensaje}"></p>
+</div>
+
+
+<div th:each="c:${carr}"  th:if="${c.FkCliente2.getId()==user} and ${c.estado=='espera'}"
+style="width: 350px;
+	height: 235px;
+	float: left;
+	background-color: #C9E0D4;
+	margin-left: 40px;
+	margin-top: 20px;
+	border-radius: 10px;">
+	
+<div style="width: 150px;
+	height: 230px;
+	float: right;
+	background-color: #C9E0D4;
+	margin-right: 10px;
+	text-align: center;
+	border-radius: 70px;">
+<label th:text="${c.idCarrito}" hidden></label><br>
+<label style="color: black;">Nombre:</label>
+<label th:text="${c.nombre}" style="color: black;"></label><br>
+<label style="color: black;">Precio:</label>
+<label th:text="${c.precio}" style="color: black;"></label> <label style="color: black;">$</label><br>
+<label style="color: black;">Cantidad:</label>
+<label th:text="${c.Cantidad}" style="color: black;"></label><br>
+</div>
+
+<div style=
+   "width: 150px;
+	height: 150px;
+	margin-left: 5px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 50px;"><img th:src="@{'/imagenes/'+${c.imagen}}" style="width: 100%; height: 100%;
+	border-radius: 50px;" /></div>
+	
+	
+<a th:href="@{/llevardatos2/}+${c.idCarrito}" class="btn btn-success" style=" margin-left: 10px; margin-top:30px">Comprar</a>
+<a th:href="@{/llevardatos3/}+${c.idCarrito}" class="btn btn-danger" style=" margin-left: 10px; margin-top:30px">Eliminar</a>
+</div>
+
+
+</body>
+</html>
